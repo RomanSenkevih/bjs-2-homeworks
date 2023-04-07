@@ -21,6 +21,11 @@ function solveEquation(a, b, c) {
   return arr;
 }
 
-function calculateTotalMortgage(percent, contribution, amount, countMonths) {
-  
+  function calculateTotalMortgage(percent, contribution, amount, countMonths) {
+    let p = parseFloat(percent / 100 / 12);
+    let s = parseFloat(amount - contribution);
+    let n = parseFloat(countMonths);
+    let monthlyPayment = s * (p + (p / (((1 + p)**n) - 1)));
+    let result = (s === 0) ?  0 : (monthlyPayment * n).toFixed(2);
+    return parseFloat(result);
 }
