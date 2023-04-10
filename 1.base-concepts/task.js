@@ -14,8 +14,7 @@ function solveEquation(a, b, c) {
           x2 = (-b - Math.sqrt(d)) / 2*a;
            arr[0] = x1;
            arr[1] = x2;
-        }
-        if (d < 0){
+        }else if (d < 0){
           arr = [];
         }
   return arr;
