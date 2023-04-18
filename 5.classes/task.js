@@ -85,5 +85,66 @@ class PrintEditionItem {
     }
 
   }
+// ------------------------------Задача 3. Журнал успеваемости *------------------------------------------------
+
+class Student {
+  marks = {};
+  constructor(name) {
+    this.name = name
+  } 
+
+  addMark(grade, itemName){
+    let x = grade > 2 && grade < 6;
+    if(itemName in this.marks != true && x){
+      this.marks[itemName] = [];
+    }
+
+    if(x){
+      this.marks[itemName].push(grade);
+    }else{return 0}
+  }
+
+  getAverageBySubject(itemName){
+    if(itemName in this.marks){
+      return this.marks[itemName].reduce((acc, element) => acc + element, 0) / this.marks[itemName].length
+    }else{return 0}
+  }
+
+  getAverage(){
+    let grade = Object.keys(this.marks);
+    let result = 0;
+    for(let i = 0; i < grade.length; i++){
+      result += this.getAverageBySubject(grade[i]);
+    }
+    return grade.length === 0 ?  result = 0 : result / grade.length;
+  }
+}
+
+  
 
 
+
+// let student3 = new Student("Ника", "женский", 19);
+// let student4 = new Student("Роман", "мужской", 109);
+
+// Student.prototype.setSubject = function (subjectName) {
+//   this.subject = subjectName;
+// }
+
+// Student.prototype.addMarks = function (...marks) {
+//   'marks' in this ? this.marks.push(...marks) : 0;
+// }
+
+// Student.prototype.getAverage = function () {
+// if('marks' in this === false || this.marks.length === 0){
+//   return 0;
+// }else{
+//   return this.marks.reduce((acc, element) => acc + element, 0) / this.marks.length;
+// }
+// }
+
+// Student.prototype.exclude = function (reason) {
+// delete this.marks;
+// delete this.subject;
+// this.excluded = reason;
+// }
